@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FreeAssociation</string>
+    <string name="action_refresh">refresh</string>
+    <string name="action_next">next</string>
+    <string name="local">LOCAL</string>
+    <string name="api">API</string>
 </resources>
