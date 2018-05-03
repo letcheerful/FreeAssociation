@@ -48,7 +48,7 @@ public class APILoader implements DataLoader {
 
                 Response<UserSearchResponse> response = call.execute();
 
-                List<User> userListInPage = (response.body() != null)? response.body().userList: null;
+                List<User> userListInPage = (response.body() != null) ? response.body().userList : null;
                 if (userListInPage != null && response.body().userList.size() > 0) {
 
                     for (User user : response.body().userList) {

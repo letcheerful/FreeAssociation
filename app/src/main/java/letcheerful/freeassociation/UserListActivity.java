@@ -28,8 +28,8 @@ public class UserListActivity extends AppCompatActivity {
 
         tabHost.addTab(
                 tabHost.newTabSpec(getString(R.string.api))
-                .setContent(new EmptyTabFactory(this))
-                .setIndicator(getString(R.string.api))
+                        .setContent(new EmptyTabFactory(this))
+                        .setIndicator(getString(R.string.api))
         );
         tabHost.addTab(
                 tabHost.newTabSpec(getString(R.string.local))
@@ -50,7 +50,7 @@ public class UserListActivity extends AppCompatActivity {
             }
 
             if (tabId.equals(getString(R.string.local))) {
-                if(localSearchFragment == null) {
+                if (localSearchFragment == null) {
                     localSearchFragment = new UserSearchFragment();
                     localSearchFragment.setAssociator(
                             new GitHubUserAssociator(this, GitHubUserAssociator.MODE_LOCAL)

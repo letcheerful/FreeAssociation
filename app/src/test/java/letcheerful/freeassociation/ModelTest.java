@@ -16,19 +16,10 @@ import letcheerful.freeassociation.service.UserSearchService;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class UserTest {
-
-
-    private UserSearchService service;
-
-    @Before
-    public void setup() {
-
-    }
-
+public class ModelTest {
 
     @Test
-    public void testEquals() {
+    public void testUserEquals() {
         User userX = new User();
 
         userX.id = 8295371;

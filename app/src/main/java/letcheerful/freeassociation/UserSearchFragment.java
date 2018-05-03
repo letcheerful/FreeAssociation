@@ -1,17 +1,12 @@
 package letcheerful.freeassociation;
 
-import android.content.Context;
-import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.ProgressBar;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -28,7 +23,6 @@ public class UserSearchFragment extends Fragment {
     private Disposable searchSubscription;
     private PublishProcessor<String> searchProcessor;
     private GitHubUserAssociator associator;
-    private ProgressBar progressBar;
 
     public void setAssociator(GitHubUserAssociator associator) {
         this.associator = associator;
@@ -86,9 +80,6 @@ public class UserSearchFragment extends Fragment {
                 return false;
             }
         });
-
-        progressBar = new ProgressBar(getActivity());
-
         return view;
     }
 
@@ -109,9 +100,6 @@ public class UserSearchFragment extends Fragment {
         if (loadSubscription != null && loadSubscription.isDisposed()) {
             loadSubscription.dispose();
         }
-
-        showProgress();
-
         loadSubscription = associator.getUserList(keyword)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -119,17 +107,7 @@ public class UserSearchFragment extends Fragment {
                         userList -> {
                             adapter.setList(userList);
                             adapter.notifyDataSetChanged();
-                        },
-                        error -> dismissProgress(),
-                        this::dismissProgress
-
+                        }
                 );
-    }
-
-    public void showProgress() {
-
-    }
-
-    public void dismissProgress() {
     }
 }
